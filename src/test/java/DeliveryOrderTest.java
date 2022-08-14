@@ -28,16 +28,16 @@ public class DeliveryOrderTest {
 
     @Test
     void completedBlank() {
-        $("[data-test-id=city] input").setValue("Пермь");
+        $("[data-test-id=city] input").setValue("Омск");
         $("[data-test-id=date] .input__control").click();
         $("[data-test-id=date] .input__control").sendKeys(Keys.CONTROL + "A");
         $("[data-test-id=date] .input__control").sendKeys(BACK_SPACE);
         $("[data-test-id=date] .input__control").setValue(getDate());
-        $("[data-test-id=name] .input__control").setValue("Мадс Миккельсен");
-        $("[data-test-id=phone] .input__control").setValue("+79810591703");
+        $("[data-test-id=name] .input__control").setValue("Александр Нестеров");
+        $("[data-test-id=phone] .input__control").setValue("+79238244815");
         $("[data-test-id=agreement]").click();
         $x("//button[contains(@class, 'button_view_extra')]").click();
         $("[data-test-id=notification]").shouldBe(visible, Duration.ofSeconds(15));
-        $("[data-test-id=notification] [class='notification__content']").shouldHave(exactText("Встреча успешно забронирована на " + getDate()));
+        $("[data-test-id=notification] [class='notification__content']").shouldHave(exactText("Встреча забронирована на " + getDate()));
     }
 }
